@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Are You Chicken? — Cadets Fundraiser Mockup
 
-## Getting Started
+A static, single-page concept for a playful community fundraiser. It illustrates a possible challenge, donation, nomination, sponsor, and leaderboard experience; it is not a live fundraising service.
 
-First, run the development server:
+## Current scope
+
+The page is a visual prototype only. Its buttons do not submit forms or navigate to real donation, nomination, sponsor, or leaderboard services. There is no payment processing, authentication, database, submission handling, or administrative moderation system. The sample leaderboard, challenge amount, and page copy are hard-coded presentation content, not live information or approved operating rules.
+
+See [the product and flow guide](docs/PRODUCT_AND_FLOW.md) for what the prototype shows, what remains unimplemented, and the decisions needed before turning it into a service.
+
+## Run locally
+
+Requirements: Node.js and npm.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Available project scripts:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+npm run start
+```
 
-## Learn More
+There is currently no test script in `package.json`.
 
-To learn more about Next.js, take a look at the following resources:
+## Project map
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Path | Purpose |
+| --- | --- |
+| `app/page.jsx` | The `/` route and the complete static fundraiser page. |
+| `app/layout.tsx` | Root document layout, global font setup, and site metadata. |
+| `app/globals.css` | Tailwind CSS imports, design tokens, and global styles. |
+| `components/ui/` | Shared button and card primitives used by the page. |
+| `lib/utils.ts` | `cn`, a helper that combines and merges CSS class names. |
+| `public/` | Static assets. |
+| `app/page_old.tsx` | An older starter page; it is not the active `/` route. |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The active page is a client component because it uses Framer Motion. It builds its steps and leaderboard from arrays local to the page. The project uses Next.js App Router, React, Tailwind CSS, Lucide icons, and shared UI components; the page itself is JavaScript while the layout and UI components use TypeScript.
 
-## Deploy on Vercel
+## Before extending the prototype
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Agree on the fundraiser's real rules, content approval process, privacy expectations, and donation destination before connecting public submissions or payments. The UI currently presents moderation and safety statements, but does not enforce them. See the product and flow guide for specific open questions.
